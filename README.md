@@ -1,4 +1,4 @@
-# Deployment Docker of Django, Postgres database, NginX, Gunicorn
+# Deployment Docker of Django, PostgreSQL database, NginX, Gunicorn
 This is a [Docker][] setup for deploying your web application based on Django. It also contains tox file for testing your app.
 
 ## Requirements
