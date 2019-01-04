@@ -1,0 +1,67 @@
+# resources:
+# http://www.ameyalokare.com/docker/2017/09/20/nginx-flask-postgres-docker-compose.html
+# https://github.com/juggernaut/nginx-flask-postgres-docker-compose-example
+# https://serverfault.com/questions/783806/docker-how-to-django-uwsgi-gunicorn-nginx/787402
+# https://github.com/andrecp/django-tutorial-docker-nginx-postgres
+# https://github.com/realpython/dockerizing-django
+# http://ruddra.com/2016/08/14/docker-django-nginx-postgres/index.html
+# https://stackoverflow.com/questions/32180589/docker-how-to-expose-a-socket-over-a-port-for-a-django-application
+
+
+version: '3'
+
+services:
+
+  # database containers, one for each db
+  db:
+    image: postgres:11.1
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    env_file:
+      - config/db/database
+    networks:
+      - database
+    ports:
+      - "5432:5432"
+
+  # web container, with django + gunicorn
+  djangoapp:
+    build: .
+    environment:
+      - DJANGO_SETTINGS_MODULE
+    volumes:
+      - .:/opt/services/djangoapp/src
+      - static:/opt/services/djangoapp/static
+      - media:/opt/services/djangoapp/media
+    networks:
+      - database
+      - nginx_network
+    depends_on:
+      - db
+
+  # reverse proxy container (nginx)
+  nginx:
+    image: nginx:1.13
+    ports:
+      - 80:80
+    
+    volumes:
+      - ./config/nginx/conf.d:/etc/nginx/conf.d
+      - static:/opt/services/djangoapp/static
+      - media:/opt/services/djangoapp/media
+
+    networks:
+      - nginx_network
+    depends_on:
+      - djangoapp
+
+networks:
+  database:
+    driver: bridge
+  nginx_network:
+    driver: bridge
+
+volumes:
+  db_data:
+  static:
+  media:
