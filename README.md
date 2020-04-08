@@ -1,6 +1,8 @@
 # Deployment Docker of Django, PostgreSQL database, NginX, Gunicorn
 This is a [Docker][] setup for deploying your web application based on Django. It also contains tox file for testing your app.
 
+<a href='https://ko-fi.com/Y8Y31LBT4' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi3.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+
 ## Requirements
 You need to install [Docker][] and [Docker-Compose][].
 
