@@ -1,4 +1,6 @@
 # Deployment Docker of Django, PostgreSQL database, NginX, Gunicorn
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FMexsonFernandes%2FDocker-Django-NginX-PostgreSQL-Gunicorn-Deployment&count_bg=%2383DF3D&title_bg=%23000000&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
+
 This is a [Docker][] setup for deploying your web application based on Django. It also contains tox file for testing your app.
 
 <a href='https://ko-fi.com/Y8Y31LBT4' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi3.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
